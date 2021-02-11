@@ -1,0 +1,35 @@
+<h4 class="h">Processed image for classification</h4>
+
+<div class="image-url" *ngIf="imageURL">
+  <img [src]="imageURL" class="image_url">
+</div>
+
+<button mat-mini-fab aria-label="Prediction" matTooltip="Predict Damaged / Non Damaged" class="predictionb"
+  (click)="startPrediction()">
+  <mat-icon>play_arrow</mat-icon>
+</button>
+
+
+<div *ngIf="running">
+  <mat-spinner class="spinner">
+
+  </mat-spinner>
+  <div class="bottom">
+
+  </div>
+</div>
+
+
+<div *ngIf="res">
+  <div *ngIf="DAMAGED; else nondamaged" class="damaged">
+    <h3 classs="h3">Damaged</h3>
+  </div>
+
+  <ng-template #nondamaged>
+    <div class="nondamaged">
+      <h3 classs="h3">Non Damaged</h3>
+    </div>
+  </ng-template>
+
+
+</div>

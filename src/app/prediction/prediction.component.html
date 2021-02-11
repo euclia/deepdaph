@@ -1,0 +1,61 @@
+<!-- <p>prediction works!</p> -->
+
+
+<!-- <div *ngIf="prediction">
+    {{prediction}}
+</div> -->
+
+
+<div *ngIf="prediction" class="pred_all">
+    <div class="image-url" *ngIf="measurementsPhoto" class="main_photo">
+        <img [src]="measurementsPhoto" class="main_photo_p">
+    </div>
+    
+    <div class="image-url" *ngIf="heartPhoto" class="heart_photo">
+        <img [src]="heartPhoto" class="actual_photo">
+        <div mat-subheader *ngIf="prediction.heart3">
+            Three class prediction for lipids concentration on heart
+        </div>
+        <div *ngIf="prediction.heart3" class="class-preds">
+            [ {{prediction.heart3}} ]
+        </div>
+    </div>
+    
+    <div class="image-url" *ngIf="abdomenPhoto" class="abdomen_photo">
+        <img [src]="abdomenPhoto" class="actual_photo">
+        <div mat-subheader *ngIf="prediction.abdomen5" class="subh">
+            Five and three class prediction for lipids concentration on abdomen
+        </div>
+        <div *ngIf="prediction.abdomen5" class="class-preds">
+            [ {{prediction.abdomen5}} ]
+        </div>
+        <!-- <div mat-subheader *ngIf="prediction.abdomen3">
+            Three class prediction for lipids concentration on abdomen
+        </div> -->
+        <div *ngIf="prediction.abdomen3" class="class-preds">
+            [ {{prediction.abdomen3}} ]
+        </div>
+    </div>
+
+
+
+    <div>
+        <div class="predictions">
+            <div mat-subheader *ngIf="prediction.tailLength" class="t_h">
+                Tail length
+            </div>
+            <div *ngIf="prediction.tailLength" class="tl">
+                {{prediction.tailLength}} μm
+            </div>
+    
+            <div mat-subheader *ngIf="prediction.mm" class="l_h"> 
+                Total length
+            </div>
+            <div *ngIf="prediction.mm" class="mm_l">
+                {{prediction.mm}} μm
+            </div>
+        </div>
+    </div>
+
+
+</div>

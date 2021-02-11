@@ -1,0 +1,161 @@
+.uploadfilecontainer {
+    background-image: url("../../assets/upload-icon-6.png");
+    background-repeat: no-repeat;
+    background-size: 26px;
+    background-position: center;
+    height: 52px;
+    /* height: calc(100vh - 110px); */
+    width: 52px;
+    margin: 20px;
+    float: left;
+    border: 1px dashed #1C8ADB;
+    border-radius: 10px;
+}
+
+.image_url{
+  height: 480px;
+  width: 640px;
+  margin: 16px;
+  float: left;
+  box-shadow: 0px 5px 24px black;
+}
+
+.image_url_div{
+    height: 520px;
+    /* width: 100%; */
+}
+  
+.divid{
+    margin-top: calc(100vh - 340px);
+}
+
+.dash-main{
+    /* width:50%; */
+    float: left;
+}
+
+
+.image-all{
+    width: 150%;
+}
+
+
+.uploadfilecontainer:hover {
+  cursor: pointer;
+  background-color: #9ecbec !important;
+  opacity: 0.8;
+}
+  
+.delete-file{
+    float: right;
+    margin-top: 12px;
+    margin-right: 20px;
+    position: relative;
+    right:80;
+    top:450px;
+}
+
+.start-prediction{
+    float: right;
+    margin-top: 12px;
+    background: cadetblue;
+    position: relative;
+    right:20;
+    top:450px;
+}
+
+.h4{
+    margin-left: 14px;
+}
+
+.processedImage{
+    margin-top: 5em;
+    height: 720px;
+}
+
+.buttons-list{
+    width: 100%;
+    position: absolute;
+    bottom:20;
+    right:20;
+}
+
+.exposed-toggle{
+    float: right;
+    margin-top: 1.2em;
+    /* margin-bottom: 1em; */
+}
+
+.exposed-form{
+    float: right;
+    margin-top: 0.5em;
+    /* margin-bottom: 1em; */
+}
+
+.age-form{
+    float: right;
+    margin-top: 0.2em;
+    /* margin-bottom: 1em; */
+}
+
+.control-toggle{
+    float: right;
+    margin-top: 1.2em;
+    /* margin-bottom: 1em; */
+}
+
+.spinner{
+    margin-top: 8em;
+    margin-left: 18em;
+}
+
+
+.tags{
+    widows: 26%;
+    float:right;
+    display: grid;
+    position: relative;
+}
+
+.exposed-form{
+    float: left;
+    /* margin-bottom: 1em; */
+}
+
+.mat-subheader{
+    padding-top: 2px;
+    padding: 0;
+    width:30%;
+}
+
+.scale-header{
+    display: flex;
+}
+
+.task_c{
+    padding-left:0.5em;
+    padding-top:0.5em;
+    padding-right: 0.5em;
+    color: rgba(0,0,0,.87);
+}
+
+.task{
+    width: 200px;
+    float: left;
+    /* height: calc(100vh - 700px); */
+    overflow: auto;
+}
+
+.prediction{
+    float:left;
+    /* position: absolute; */
+    width: calc(100vh - 400px);
+    overflow-y:scroll;    
+    overflow-x: auto;
+}
+
+.sample-images{
+    float:left;
+    margin-left: 2em;
+    margin-top: 2em;
+}

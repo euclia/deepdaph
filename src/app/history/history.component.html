@@ -1,0 +1,163 @@
+<!-- <div class="main">
+  <div *ngFor="let pred of predictions" class="prediction">
+
+    <div *ngIf="pred.inputthumbphoto; else loading">
+      <div class="pred_header">
+        <h4 class="head">{{pred.date | date}}</h4>
+      </div>
+      <img [src]="pred.inputthumbphoto" class="image_input">
+
+      <div *ngIf="pred.prediction === 'Damaged'; else nondamaged">
+        <mat-icon matTooltip="Damaged daphnia" class="pred_damaged_icon">error</mat-icon>
+        <button mat-icon-button matTooltip="View" class="view_but" (click)="viewPred(pred)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="delete_but" (click)="deletePred(pred)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <ng-template #nondamaged>
+        <div>
+          <mat-icon matTooltip="Non damaged daphnia" class="pred_nondamaged_icon">eco</mat-icon>
+          <button mat-icon-button matTooltip="View" class="view_but" (click)="viewPred(pred)">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Delete" class="delete_but" (click)="deletePred(pred)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </div>
+      </ng-template>
+    </div>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+</div>
+
+<div class="photos">
+
+  <div *ngIf="showingpred">
+    <div class="actualpred_header">
+      <h4 class="actualhead">{{showingpred.date | date}}</h4>
+    </div>
+    <div *ngIf="showingpred.prediction === 'Damaged'; else nondamaged">
+      <mat-icon matTooltip="Damaged daphnia" class="pred_damaged_icon">error</mat-icon>
+    </div>
+    <ng-template #nondamaged>
+      <div>
+        <mat-icon matTooltip="Non damaged daphnia" class="pred_nondamaged_icon">eco</mat-icon>
+      </div>
+    </ng-template>
+  </div>
+
+  <div *ngIf="inputactualphoto">
+    <img [src]="inputactualphoto" class="image_actual_input">
+  </div>
+  <div *ngIf="processedimage">
+    <img [src]="processedimage" class="image_forpred_input">
+    <button mat-icon-button matTooltip="Download processed image" class="download_but"
+      (click)="downloadProcessedimage(showingpred)">
+      <mat-icon>arrow_downward</mat-icon>
+    </button>
+  </div>
+</div> -->
+
+<div class="queries">
+  
+  <mat-checkbox class="checkb" [(ngModel)]="checked_control">Control</mat-checkbox>
+  <mat-checkbox class="checkb" [(ngModel)]="checked_exp" (change)="exposed(checked_exp)">Exposed</mat-checkbox>
+
+  <mat-form-field *ngIf="checked_exp" appearance="outline" class="input">
+    <mat-label>Exposed</mat-label>
+    <input matInput placeholder="At"  [(ngModel)]="exposed_at">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input">
+    <mat-label>Age</mat-label>
+    <input matInput placeholder="Days" [(ngModel)]="age_inp">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Generation</mat-label>
+    <mat-select [(value)]="_generation">
+      <mat-option>None</mat-option>
+      <mat-option value="0">0</mat-option>
+      <mat-option value="1">1</mat-option>
+      <mat-option value="2">2</mat-option>
+      <mat-option value="3">3</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="from_date">
+    <mat-label>From</mat-label>
+    <input matInput [matDatepicker]="fromp" [(ngModel)]="from_d">
+    <mat-datepicker-toggle matSuffix [for]="fromp"></mat-datepicker-toggle>
+    <mat-datepicker #fromp></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="to_date">
+    <mat-label>To</mat-label>
+    <input matInput [matDatepicker]="top" [(ngModel)]="to_d">
+    <mat-datepicker-toggle matSuffix [for]="top"></mat-datepicker-toggle>
+    <mat-datepicker #top></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-mini-fab color="primary" matTooltip="Execute" (click)="execute()">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+
+  <button mat-mini-fab color="primary" matTooltip="Clear all" (click)="clear()" class="clear_b">
+    <mat-icon>clear</mat-icon>
+  </button>
+
+
+</div>
+<mat-divider></mat-divider>
+
+<div class="main">
+  <div *ngFor="let pred of predictions" class="prediction">
+    <div *ngIf="pred.inputthumbphoto; else loading">
+      <div class="pred_header">
+        <h4 class="head">{{pred.date | date}}</h4>
+      </div>
+      <div *ngIf="pred.inputthumbphoto">
+        <img [src]="pred?.inputthumbphoto" class="image_input">
+      </div>
+      <!-- <img [src]="blobs" class="image_input"> -->
+      <div *ngIf="pred.prediction === 'Damaged'; else nondamaged">
+        <mat-icon matTooltip="Damaged daphnia" class="pred_damaged_icon">error</mat-icon>
+        <button mat-icon-button matTooltip="View" class="view_but" (click)="viewPred(pred)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="delete_but" (click)="deletePred(pred)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-icon-button matTooltip="View" class="view_but" (click)="viewPred(pred)">
+          <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Delete" class="delete_but" (click)="deletePred(pred)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </div>
+  <div class="space_v"></div>
+</div>
+
+
+<app-prediction [prediction]="pred" class="prediction_c"></app-prediction>
+
+<mat-paginator #paginator [length]="total"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageEvent($event)" class="paginator">
+</mat-paginator>
+<!-- <mat-divider></mat-divider> -->

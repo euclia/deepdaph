@@ -1,0 +1,139 @@
+<div class="dash-main">
+  <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)"
+    matTooltip="Upload daphnia jpeg or png" *ngIf="!image">
+    <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)" accept="image/jpeg, image/png">
+
+  </div>
+  <button *ngIf="!image" color="primary"
+     mat-mini-fab aria-label="Sample" matTooltip="Download sample images" 
+     class="sample-images" (click)="downloadImages()">
+    <mat-icon>play_arrow</mat-icon>
+  </button>
+
+
+  <div *ngIf="image" class="image-all">
+    <h4 class="h4">Image for prediction:</h4>
+
+    <mat-divider></mat-divider>
+
+    <div class="tags">
+
+      <mat-slide-toggle class="control-toggle" [checked]="control" (change)="onControl($event)">
+        Control
+      </mat-slide-toggle>
+
+
+      <mat-slide-toggle class="exposed-toggle" [checked]="exposed" (change)="onExposed($event)">
+        Exposed
+      </mat-slide-toggle>
+      
+      <div *ngIf="exposed">
+        <form class="exposed-form">
+          <mat-form-field class="personal_form">
+            <input matInput [disabled]="!exposed" placeholder="Exposed at" [(ngModel)]="_exposedAt" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </form>
+      </div>
+
+      <form class="age-form">
+        <mat-form-field class="personal_form">
+          <input matInput placeholder="Age in days" [(ngModel)]="_age" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+      </form>
+
+      <div class="gen">
+        <mat-form-field>
+          <mat-label>Generation</mat-label>
+          <mat-select [(value)]="_generation">
+            <mat-option>None</mat-option>
+            <mat-option value="0">0</mat-option>
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="scale-header">
+        <div mat-subheader>Scale</div>
+        <div>
+          <mat-icon color="warn" aria-hidden="false" class="info" matTooltip="Input scale in μm per pixels. If left blank the model will 
+          search for a red line as scale to count the pixels and have as default 500 μm for scale"
+          matTooltipClass="example-tooltip-red"
+          class="example-button">info</mat-icon>
+        </div>
+      </div>
+      
+
+      <form class="mm-form">
+        <mat-form-field >
+          <!-- <mat-label>μm</mat-label> -->
+          <input matInput placeholder="μm" [(ngModel)]="_mm" [ngModelOptions]="{standalone: true}">
+          <mat-hint align="start"><strong>μΜ</strong> </mat-hint>
+        </mat-form-field>
+      </form>
+
+      <form class="pixels-form">
+        <mat-form-field >
+          <!-- <mat-label>per pixels</mat-label> -->
+          <input matInput placeholder="μm" [(ngModel)]="_pixels" [ngModelOptions]="{standalone: true}">
+          <mat-hint align="start"><strong>per pixels</strong> </mat-hint>
+        </mat-form-field>
+      </form>
+
+
+
+      <div class="buttons-list" *ngFor="let file of files;let i=index">
+        <button mat-mini-fab aria-label="Prediction" matTooltip="Start predictions" class="start-prediction"
+          (click)="saveImage(i)">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-mini-fab aria-label="Delete" matTooltip="Reset" class="delete-file" (click)="deleteAttachment(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="image_url_div">
+      <img [src]="imgURL" class="image_url" *ngIf="imgURL">
+    </div>
+    <mat-divider></mat-divider>
+
+  </div>
+
+  <div *ngIf="running">
+    <h4 class="h4">Predictions running</h4>
+    <!-- <div c></div> -->
+  </div>
+
+  <div *ngIf="taskGot && !running">
+    <h4 class="h4">Predictions running</h4>
+    <!-- <div c></div> -->
+  </div>
+
+  <div>
+    <div *ngIf="taskGot" class="task">
+      <div *ngFor="let c of taskGot.comments">
+        <!-- <div mat-subheader class=task_c>{{c}}</div> -->
+          <h5 class=task_c>{{c}}</h5>
+      </div>
+    </div>
+
+    <app-prediction [prediction]="prediction" class="prediction"></app-prediction>
+
+    <!-- <div *ngIf="running">
+      <mat-spinner class="spinner">
+  
+      </mat-spinner>
+    </div> -->
+  </div>
+
+
+  <!-- <div *ngIf="processedImage" class="processedImage">
+    <app-processed-image [processedImage]="processedImage" [filename]="filename"></app-processed-image>
+  </div> -->
+
+
+
+</div>

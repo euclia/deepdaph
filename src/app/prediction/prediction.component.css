@@ -1,0 +1,73 @@
+.main_photo{
+    height: 480px;
+    width: 640px;
+    margin: 16px;
+    float: left;
+    /* margin-top: 1em; */
+    /* box-shadow: 0px 5px 12px black; */
+}
+
+.main_photo_p{
+    height: 480px;
+    width: 640px;
+    /* margin-top: 1em; */
+    box-shadow: 0px 5px 12px black;
+}
+
+.heart_photo{
+    /* max-width: 128px;
+    max-height: 128px; */
+    margin: 16px;
+    /* float: left; */
+    /* box-shadow: 0px 5px 12px black; */
+}
+
+.abdomen_photo{
+    /* max-width: 128px;
+    max-height: 128px; */
+    margin: 16px;
+    /* float: left; */
+    /* box-shadow: 0px 5px 12px black; */
+}
+
+.actual_photo{
+    max-width: 128px;
+    max-height: 128px;
+    box-shadow: 0px 5px 12px black;
+    margin-left: 1em;
+}
+
+.pred_all{
+    position: absolute;
+    width:1100px;
+    margin-bottom: 4em;
+}
+
+.predictions{
+    display: inline-table;
+}
+
+.l_h{
+    float: left;
+}
+
+.t_h{
+    float:left;
+}
+
+.tl{
+    margin-left: 1em;
+}
+
+.mm_l{
+    margin-left: 1em;
+}
+
+.subh{
+    margin-left: -1em;
+}
+
+.class-preds{
+    margin-top: 0.5em;
+    padding-left: 42em;
+}
